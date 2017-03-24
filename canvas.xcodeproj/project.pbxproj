@@ -505,6 +505,7 @@
 				C1F370671E83315300B713FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C1F370681E83315300B713FD /* Build configuration list for PBXNativeTarget "canvasTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +514,7 @@
 				C1F3706A1E83315300B713FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C1F3706B1E83315300B713FD /* Build configuration list for PBXNativeTarget "canvasUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +523,7 @@
 				C1F3706D1E83315300B713FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
