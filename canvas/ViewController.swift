@@ -65,21 +65,42 @@ class ViewController: UIViewController {
     let translation = sender.translation(in: view)
     
     if sender.state == .began {
-      
       var imageView = sender.view as! UIImageView
       newlyCreatedFace = UIImageView(image: imageView.image)
       view.addSubview(newlyCreatedFace)
       newlyCreatedFace.center = imageView.center
       newlyCreatedFace.center.y += trayView.frame.origin.y
       newlyCreatedFaceOriginalCenter = newlyCreatedFace.center
+      
+      // Here we use the method didPan(sender:), which we defined in the previous step, as the action.
+      let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(sender:)))
+      
+      // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
+      newlyCreatedFace.isUserInteractionEnabled = true
+      newlyCreatedFace.addGestureRecognizer(panGestureRecognizer)
+      
+      newlyCreatedFace.isUserInteractionEnabled = true
+      
     }
     else if sender.state == .changed {
       newlyCreatedFace.center = CGPoint(x: newlyCreatedFaceOriginalCenter.x + translation.x, y: newlyCreatedFaceOriginalCenter.y + translation.y)
     }
     else if sender.state == .ended {
-      
+      // nothing
     }
   }
   
+  func didPan(sender: UIPanGestureRecognizer) {
+    let translation = sender.translation(in: view)
+    
+    if sender.state == .began {
+      newlyCreatedFace = sender.view as! UIImageView
+      newlyCreatedFaceOriginalCenter = newlyCreatedFace.center
+    } else if sender.state == .changed {
+      newlyCreatedFace.center = CGPoint(x: newlyCreatedFaceOriginalCenter.x + translation.x, y: newlyCreatedFaceOriginalCenter.y + translation.y)
+    } else if sender.state == .ended {
+      // nothing
+    }
+  }
   
 }
